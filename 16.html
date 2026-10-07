@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UJIAN AKHIR SEMESTER (UAS) - Audio Vidio XII DKV Ganjil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        luxury: {
+                            900: '#0B0F19',
+                            800: '#151B2B',
+                            700: '#1E293B',
+                            gold: '#D4AF37',
+                            goldLight: '#F3E5AB',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(21, 27, 43, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #D4AF37 0%, #F3E5AB 50%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px -5px rgba(212, 175, 55, 0.15);
+        }
+        .quiz-container::-webkit-scrollbar { width: 8px; }
+        .quiz-container::-webkit-scrollbar-track { background: #151B2B; }
+        .quiz-container::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
+        
+        /* Badge HOTS */
+        .badge-hots {
+            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+            color: white;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        .badge-lots {
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            color: white;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        
+        /* Timer */
+        .timer-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        .timer-warning {
+            color: #EF4444 !important;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        /* Section Header */
+        .section-header {
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.15) 0%, transparent 100%);
+            border-left: 4px solid #D4AF37;
+        }
+    </style>
+</head>
+<body class="bg-luxury-900 text-gray-200 font-sans antialiased selection:bg-luxury-gold selection:text-luxury-900">
+
+    <!-- Navigasi -->
+    <nav class="fixed w-full z-50 glass border-b border-luxury-gold/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <a href="index.html" class="font-serif text-lg font-semibold text-white tracking-wide hover:text-luxury-gold transition">
+                        ← Kembali ke Beranda
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center gap-4">
+                    <div class="timer-box px-4 py-2 rounded-lg">
+                        <span class="text-xs text-gray-400">Waktu Tersisa:</span>
+                        <span id="timer" class="text-luxury-gold font-bold font-mono ml-2">120:00</span>
+                    </div>
+                    <a href="#bagian-a" class="text-sm text-gray-300 hover:text-luxury-gold transition">PG</a>
+                    <a href="#bagian-b" class="text-sm text-gray-300 hover:text-luxury-gold transition">Kompleks</a>
+                    <a href="#bagian-c" class="text-sm text-gray-300 hover:text-luxury-gold transition">B/S</a>
+                    <a href="#bagian-d" class="text-sm text-gray-300 hover:text-luxury-gold transition">Jodoh</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header UAS -->
+    <header class="pt-32 pb-16 bg-gradient-to-b from-luxury-800 to-luxury-900 border-b-2 border-luxury-gold/30">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-red-500/30 bg-red-500/10 text-red-400 text-xs font-bold tracking-widest uppercase mb-4">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                Ujian Resmi • Semester Ganjil 2026
+            </div>
+            <h1 class="font-serif text-4xl md:text-6xl font-bold text-white mb-4">
+                UJIAN <span class="gold-gradient-text">AKHIR SEMESTER</span>
+            </h1>
+            <p class="text-xl text-gray-300 font-serif italic mb-6">Audio Vidio XII DKV Ganjil</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mt-8">
+                <div class="bg-luxury-800 p-4 rounded-xl border border-luxury-gold/10">
+                    <p class="text-xs text-gray-400 uppercase tracking-wider">Materi</p>
+                    <p class="text-lg font-bold text-luxury-gold">P1-7, P9-15</p>
+                </div>
+                <div class="bg-luxury-800 p-4 rounded-xl border border-luxury-gold/10">
+                    <p class="text-xs text-gray-400 uppercase tracking-wider">Total Soal</p>
+                    <p class="text-lg font-bold text-luxury-gold">40 Soal</p>
+                </div>
+                <div class="bg-luxury-800 p-4 rounded-xl border border-luxury-gold/10">
+                    <p class="text-xs text-gray-400 uppercase tracking-wider">Waktu</p>
+                    <p class="text-lg font-bold text-luxury-gold">120 Menit</p>
+                </div>
+                <div class="bg-luxury-800 p-4 rounded-xl border border-luxury-gold/10">
+                    <p class="text-xs text-gray-400 uppercase tracking-wider">Bobot</p>
+                    <p class="text-lg font-bold text-luxury-gold">100 Poin</p>
+                </div>
+            </div>
+            <div class="mt-8 flex justify-center gap-4">
+                <a href="15.html" class="text-sm text-gray-400 hover:text-luxury-gold transition flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    Pertemuan 15
+                </a>
+                <span class="text-gray-600">|</span>
+                <a href="index.html" class="text-sm text-luxury-gold hover:text-white transition flex items-center gap-2 font-semibold">
+                    Kembali ke Beranda
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Petunjuk Ujian -->
+    <section class="max-w-5xl mx-auto px-4 py-12">
+        <div class="glass rounded-2xl p-8 border-l-4 border-luxury-gold">
+            <h2 class="font-serif text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                <span class="text-3xl">📜</span> Petunjuk Pengerjaan
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6 text-sm text-gray-300">
+                <div>
+                    <ol class="list-decimal list-inside space-y-2">
+                        <li>Isi <strong class="text-luxury-gold">Data Siswa</strong> dengan lengkap dan benar sebelum mengerjakan.</li>
+                        <li>Waktu ujian <strong class="text-red-400">120 menit</strong> — dimulai sejak Anda membuka halaman ini.</li>
+                        <li>UAS mencakup materi <strong class="text-luxury-gold">Pertemuan 1-7 dan 9-15</strong> (seluruh semester kecuali UTS).</li>
+                        <li>Kerjakan soal secara berurutan dari Bagian A hingga D.</li>
+                    </ol>
+                </div>
+                <div>
+                    <ol start="5" class="list-decimal list-inside space-y-2">
+                        <li><strong class="text-luxury-gold">Bagian A (PG):</strong> Pilih SATU jawaban paling tepat (15 LOTS + 5 HOTS).</li>
+                        <li><strong class="text-luxury-gold">Bagian B (Kompleks):</strong> Pilih LEBIH DARI SATU jawaban yang benar.</li>
+                        <li><strong class="text-luxury-gold">Bagian C (B/S):</strong> Tentukan pernyataan BENAR atau SALAH.</li>
+                        <li><strong class="text-luxury-gold">Bagian D (Menjodohkan):</strong> Cocokkan istilah dengan definisinya.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="mt-6 p-4 bg-red-900/20 border border-red-500/30 rounded-lg">
+                <p class="text-sm text-red-300"><strong>⚠️ PERINGATAN:</strong> Kecurangan dalam bentuk apapun akan mengakibatkan nilai 0 dan sanksi sesuai tata tertib sekolah. Jujur adalah kunci keberhasilan sejati.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Ujian -->
+    <form id="uasForm" class="max-w-5xl mx-auto px-4 pb-16 space-y-12">
+
+        <!-- Data Siswa -->
+        <section class="glass rounded-2xl p-6 md:p-8 border border-luxury-gold/20">
+            <h3 class="font-bold text-luxury-gold text-xl mb-6 flex items-center gap-2">
+                <span class="text-2xl">📋</span> Data Siswa
+            </h3>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-1">* Nama Lengkap</label>
+                    <input type="text" id="nama" required class="w-full bg-luxury-900 border border-gray-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-1">* NIS</label>
+                    <input type="text" id="nis" required class="w-full bg-luxury-900 border border-gray-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-1">* Tanggal Ujian</label>
+                    <input type="date" id="tanggal" required class="w-full bg-luxury-900 border border-gray-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-1">* Kelas</label>
+                    <select id="kelas" required class="w-full bg-luxury-900 border border-gray-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold focus:outline-none">
+                        <option value="">Pilih Kelas</option>
+                        <option value="XII DKV 1">XII DKV 1</option>
+                        <option value="XII DKV 2">XII DKV 2</option>
+                        <option value="XII DKV 3">XII DKV 3</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- BAGIAN A: PILIHAN GANDA (20 SOAL) -->
+        <!-- ============================================ -->
+        <section id="bagian-a" class="space-y-6">
+            <div class="section-header p-4 rounded-r-lg">
+                <h2 class="font-serif text-2xl font-bold text-white">📋 Bagian A — Pilihan Ganda</h2>
+                <p class="text-sm text-gray-400 mt-1">20 Soal (15 LOTS + 5 HOTS) • Skor 2 poin/soal • Total 40 poin</p>
+            </div>
+
+            <div class="space-y-5">
+                <!-- SOAL 1 - LOTS (P1) -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">1. Tahap perencanaan ide, penyusunan naskah, dan pembuatan storyboard dalam produksi video disebut... <span class="badge-lots">LOTS</span></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a1" value="a" class="accent-luxury-gold"> a. Produksi</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a1" value="b" class="accent-luxury-gold"> b. Pra-produksi</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a1" value="c" class="accent-luxury-gold"> c. Pasca-produksi</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a1" value="d" class="accent-luxury-gold"> d. Distribusi</label>
+                    </div>
+                </div>
+
+                <!-- SOAL 2 - LOTS (P2) -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">2. Output utama dari tahap "Ideation" dalam pra-produksi adalah... <span class="badge-lots">LOTS</span></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a2" value="a" class="accent-luxury-gold"> a. Storyboard dan Shot List</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a2" value="b" class="accent-luxury-gold"> b. Premise dan Synopsis</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a2" value="c" class="accent-luxury-gold"> c. Breakdown peralatan</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a2" value="d" class="accent-luxury-gold"> d. File rendering</label>
+                    </div>
+                </div>
+
+                <!-- SOAL 3 - LOTS (P3) -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">3. Sudut kamera yang memberikan kesan subjek terlihat berkuasa, heroik, atau mengintimidasi adalah... <span class="badge-lots">LOTS</span></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a3" value="a" class="accent-luxury-gold"> a. Eye Level</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a3" value="b" class="accent-luxury-gold"> b. High Angle</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a3" value="c" class="accent-luxury-gold"> c. Low Angle</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a3" value="d" class="accent-luxury-gold"> d. Bird's Eye View</label>
+                    </div>
+                </div>
+
+                <!-- SOAL 4 - LOTS (P4) -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">4. Pengaturan perpaduan antara Aperture, Shutter Speed, dan ISO untuk mendapatkan pencahayaan yang tepat disebut... <span class="badge-lots">LOTS</span></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a4" value="a" class="accent-luxury-gold"> a. White Balance</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a4" value="b" class="accent-luxury-gold"> b. Segitiga Eksposur</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a4" value="c" class="accent-luxury-gold"> c. Color Grading</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a4" value="d" class="accent-luxury-gold"> d. Frame Rate</label>
+                    </div>
+                </div>
+
+                <!-- SOAL 5 - LOTS (P5) -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">5. Prinsip komposisi yang membagi frame menjadi 9 bagian dengan garis horizontal dan vertikal disebut... <span class="badge-lots">LOTS</span></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a5" value="a" class="accent-luxury-gold"> a. Golden Ratio</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a5" value="b" class="accent-luxury-gold"> b. Rule of Thirds</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a5" value="c" class="accent-luxury-gold"> c. Symmetry</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a5" value="d" class="accent-luxury-gold"> d. Frame within Frame</label>
+                    </div>
+                </div>
+
+                <!-- SOAL 6 - LOTS (P6) -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">6. Pergerakan kamera yang mendongak ke atas atau menunduk ke bawah secara vertikal pada porosnya disebut... <span class="badge-lots">LOTS</span></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a6" value="a" class="accent-luxury-gold"> a. Panning</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a6" value="b" class="accent-luxury-gold"> b. Tilting</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a6" value="c" class="accent-luxury-gold"> c. Dolly</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a6" value="d" class="accent-luxury-gold"> d. Pedestal</label>
+                    </div>
+                </div>
+
+                <!-- SOAL 7 - LOTS (P7) -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">7. Jenis mikrofon yang disematkan pada pakaian talent untuk hasil suara vokal yang jernih dan fokus adalah... <span class="badge-lots">LOTS</span></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a7" value="a" class="accent-luxury-gold"> a. Boom Mic</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a7" value="b" class="accent-luxury-gold"> b. Shotgun Mic</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a7" value="c" class="accent-luxury-gold"> c. Clip-on / Lavalier</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a7" value="d" class="accent-luxury-gold"> d. Condenser Mic</label>
+                    </div>
+                </div>
+
+                <!-- SOAL 8 - LOTS (P9) -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">8. Proses meninjau seluruh footage untuk memilah klip layak pakai dan klip gagal disebut... <span class="badge-lots">LOTS</span></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a8" value="a" class="accent-luxury-gold"> a. Rendering</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a8" value="b" class="accent-luxury-gold"> b. Logging</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a8" value="c" class="accent-luxury-gold"> c. Mastering</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a8" value="d" class="accent-luxury-gold"> d. Foley</label>
+                    </div>
+                </div>
+
+                <!-- SOAL 9 - LOTS (P10) -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">9. Potongan cerdas yang menyambung dua shot berdasarkan kesamaan visual, bentuk, atau gerakan disebut... <span class="badge-lots">LOTS</span></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a9" value="a" class="accent-luxury-gold"> a. Cutaway</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a9" value="b" class="accent-luxury-gold"> b. Jump Cut</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a9" value="c" class="accent-luxury-gold"> c. Match Cut</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a9" value="d" class="accent-luxury-gold"> d. Cross-Cut</label>
+                    </div>
+                </div>
+
+                <!-- SOAL 10 - LOTS (P11) -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">10. Transisi yang paling dasar, paling sering digunakan (90%), dan paling "tidak terlihat" dalam film profesional adalah... <span class="badge-lots">LOTS</span></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a10" value="a" class="accent-luxury-gold"> a. Dissolve</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a10" value="b" class="accent-luxury-gold"> b. Hard Cut</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a10" value="c" class="accent-luxury-gold"> c. Wipe</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a10" value="d" class="accent-luxury-gold"> d. Iris</label>
+                    </div>
+                </div>
+
+                <!-- SOAL 11 - LOTS (P12) -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">11. Proses memperbaiki kesalahan teknis warna agar terlihat natural dan konsisten antar-shot disebut... <span class="badge-lots">LOTS</span></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a11" value="a" class="accent-luxury-gold"> a. Color Correction</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a11" value="b" class="accent-luxury-gold"> b. Color Grading</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a11" value="c" class="accent-luxury-gold"> c. Color Matching</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a11" value="d" class="accent-luxury-gold"> d. Color Rendering</label>
+                    </div>
+                </div>
+
+                <!-- SOAL 12 - LOTS (P13) -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">12. Level ideal untuk dialog dalam mix video profesional adalah... <span class="badge-lots">LOTS</span></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a12" value="a" class="accent-luxury-gold"> a. -30 dB hingga -24 dB</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a12" value="b" class="accent-luxury-gold"> b. -12 dB hingga -6 dB</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a12" value="c" class="accent-luxury-gold"> c. 0 dB hingga +3 dB</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a12" value="d" class="accent-luxury-gold"> d. +6 dB hingga +12 dB</label>
+                    </div>
+                </div>
+
+                <!-- SOAL 13 - LOTS (P14) -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">13. Teknik mengganti background berwarna solid (hijau/biru) dengan gambar/video lain secara digital disebut... <span class="badge-lots">LOTS</span></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a13" value="a" class="accent-luxury-gold"> a. Rotoscoping</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a13" value="b" class="accent-luxury-gold"> b. Chroma Key</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a13" value="c" class="accent-luxury-gold"> c. Motion Tracking</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a13" value="d" class="accent-luxury-gold"> d. Color Grading</label>
+                    </div>
+                </div>
+
+                <!-- SOAL 14 - LOTS (P15) -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">14. Codec video yang PALING UNIVERSAL dan didukung oleh semua platform dan perangkat adalah... <span class="badge-lots">LOTS</span></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a14" value="a" class="accent-luxury-gold"> a. ProRes</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a14" value="b" class="accent-luxury-gold"> b. DNxHR</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a14" value="c" class="accent-luxury-gold"> c. H.264</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a14" value="d" class="accent-luxury-gold"> d. CineForm</label>
+                    </div>
+                </div>
+
+                <!-- SOAL 15 - LOTS (P4-15) -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">15. Color space standar untuk video HD/Full HD (SDR) yang wajib digunakan untuk YouTube dan TV broadcast adalah... <span class="badge-lots">LOTS</span></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a15" value="a" class="accent-luxury-gold"> a. Rec.709</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a15" value="b" class="accent-luxury-gold"> b. Rec.2020</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a15" value="c" class="accent-luxury-gold"> c. DCI-P3</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a15" value="d" class="accent-luxury-gold"> d. sRGB</label>
+                    </div>
+                </div>
+
+                <!-- SOAL 16 - HOTS (P2+P3) -->
+                <div class="glass p-5 rounded-xl border-l-4 border-red-500">
+                    <p class="font-medium text-white mb-3">16. <strong>STUDI KASUS:</strong> Seorang siswa DKV merekam wawancara outdoor siang hari dengan kamera DSLR. Hasil video sangat <em>grainy</em> dan warna tidak jernih. Setelah dicek, kamera menggunakan ISO 3200 dengan aperture f/2.8 dan shutter 1/50. Analisis kesalahan utama dan solusi yang paling tepat adalah... <span class="badge-hots">HOTS</span></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a16" value="a" class="accent-luxury-gold"> a. ISO terlalu tinggi untuk kondisi terang; turunkan ke ISO 100-400 dan gunakan ND filter jika aperture harus tetap f/2.8</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a16" value="b" class="accent-luxury-gold"> b. Shutter speed terlalu lambat; naikkan ke 1/1000 tanpa mengubah ISO</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a16" value="c" class="accent-luxury-gold"> c. Aperture terlalu besar; tutup ke f/22 tanpa mengubah ISO</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a16" value="d" class="accent-luxury-gold"> d. Ganti lensa kamera dengan yang lebih mahal</label>
+                    </div>
+                </div>
+
+                <!-- SOAL 17 - HOTS (P10) -->
+                <div class="glass p-5 rounded-xl border-l-4 border-red-500">
+                    <p class="font-medium text-white mb-3">17. Dalam sebuah scene dialog dua karakter (A di kiri menghadap kanan, B di kanan menghadap kiri), kameraman mengambil shot karakter A dari sisi kiri garis imajiner, lalu shot karakter B dari sisi BERSEBERANGAN garis. Dampak yang terjadi pada penonton adalah... <span class="badge-hots">HOTS</span></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a17" value="a" class="accent-luxury-gold"> a. Video terlihat lebih sinematik dan dinamis</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a17" value="b" class="accent-luxury-gold"> b. Kedua karakter seolah menatap ke arah yang sama, penonton bingung dengan arah dialog</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a17" value="c" class="accent-luxury-gold"> c. Kualitas audio menjadi lebih jernih</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a17" value="d" class="accent-luxury-gold"> d. Depth of field menjadi lebih tipis</label>
+                    </div>
+                </div>
+
+                <!-- SOAL 18 - HOTS (P13) -->
+                <div class="glass p-5 rounded-xl border-l-4 border-red-500">
+                    <p class="font-medium text-white mb-3">18. <strong>STUDI KASUS:</strong> Seorang siswa membuat video dokumenter dengan musik latar EDM yang sangat energetik dengan volume sama kerasnya dengan dialog narasumber. Saat ditonton, penonton tidak bisa memahami apa yang dikatakan narasumber. Analisis kesalahan dan solusi yang paling tepat adalah... <span class="badge-hots">HOTS</span></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a18" value="a" class="accent-luxury-gold"> a. Turunkan volume musik ke -24 dB hingga -18 dB, naikkan dialog ke -12 dB hingga -6 dB, dan terapkan sidechain ducking</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a18" value="b" class="accent-luxury-gold"> b. Hapus seluruh musik latar agar dialog terdengar jelas</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a18" value="c" class="accent-luxury-gold"> c. Naikkan volume dialog ke +6 dB tanpa mengubah musik</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a18" value="d" class="accent-luxury-gold"> d. Ganti musik EDM dengan musik klasik tanpa mengubah level</label>
+                    </div>
+                </div>
+
+                <!-- SOAL 19 - HOTS (P15) -->
+                <div class="glass p-5 rounded-xl border-l-4 border-red-500">
+                    <p class="font-medium text-white mb-3">19. Seorang siswa merender video dokumenter 10 menit dalam format ProRes 422 HQ dengan resolusi 4K. Ukuran file: 30 GB. Ia langsung mengupload ke YouTube. Setelah menunggu 5 jam, YouTube menampilkan pesan error: "Upload gagal". Analisis kesalahan dan strategi yang benar adalah... <span class="badge-hots">HOTS</span></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a19" value="a" class="accent-luxury-gold"> a. ProRes adalah codec EDITING/ARCHIVE, bukan untuk distribusi. Render ulang dengan H.264 MP4 1080p bitrate 10 Mbps untuk YouTube, dan simpan ProRes sebagai master archive</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a19" value="b" class="accent-luxury-gold"> b. Upload ke YouTube memerlukan file minimal 50 GB, jadi render di ProRes 4K adalah benar</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a19" value="c" class="accent-luxury-gold"> c. YouTube hanya menerima format MOV, bukan MP4</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a19" value="d" class="accent-luxury-gold"> d. ProRes adalah satu-satunya codec yang didukung YouTube</label>
+                    </div>
+                </div>
+
+                <!-- SOAL 20 - HOTS (P2+P15) -->
+                <div class="glass p-5 rounded-xl border-l-4 border-red-500">
+                    <p class="font-medium text-white mb-3">20. Seorang siswa ingin membuat video pendek berdurasi 3 menit bertema "Kehidupan Pagi di Pasar Tradisional" yang akan diupload ke YouTube DAN diarsipkan sebagai master. Urutan kerja dan strategi rendering yang PALING LOGIS dan EFEKTIF adalah... <span class="badge-hots">HOTS</span></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a20" value="a" class="accent-luxury-gold"> a. Ideation → Naskah → Storyboard & Shot List → Syuting → Logging → Rough Cut → Fine Cut → Color Grade → Audio Mix → Render 2 versi (Master ProRes + Distribution H.264 MP4) → Upload YouTube</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a20" value="b" class="accent-luxury-gold"> b. Syuting langsung → Editing → Render H.264 → Upload YouTube</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a20" value="c" class="accent-luxury-gold"> c. Rendering → Color Grading → Naskah → Syuting</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="a20" value="d" class="accent-luxury-gold"> d. Casting → Syuting → Naskah → Budgeting → Render ProRes → Upload YouTube</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- BAGIAN B: PILIHAN GANDA KOMPLEKS (10 SOAL) -->
+        <!-- ============================================ -->
+        <section id="bagian-b" class="space-y-6">
+            <div class="section-header p-4 rounded-r-lg">
+                <h2 class="font-serif text-2xl font-bold text-white">📋 Bagian B — Pilihan Ganda Kompleks</h2>
+                <p class="text-sm text-gray-400 mt-1">10 Soal • Skor 2 poin/soal • Total 20 poin • <strong class="text-red-400">Pilih LEBIH DARI SATU jawaban yang benar</strong></p>
+            </div>
+
+            <div class="space-y-5">
+                <!-- SOAL B1 -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">B1. Manakah yang termasuk komponen utama tahap <strong>Pra-Produksi</strong>? <em>(Pilih semua yang benar)</em></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b1" value="a" class="accent-luxury-gold"> a. Penulisan naskah</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b1" value="b" class="accent-luxury-gold"> b. Pembuatan storyboard</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b1" value="c" class="accent-luxury-gold"> c. Color grading</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b1" value="d" class="accent-luxury-gold"> d. Hunting lokasi</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b1" value="e" class="accent-luxury-gold"> e. Rendering video akhir</label>
+                    </div>
+                </div>
+
+                <!-- SOAL B2 -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">B2. Manakah yang merupakan elemen <strong>Segitiga Eksposur</strong>? <em>(Pilih semua yang benar)</em></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b2" value="a" class="accent-luxury-gold"> a. Aperture</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b2" value="b" class="accent-luxury-gold"> b. White Balance</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b2" value="c" class="accent-luxury-gold"> c. Shutter Speed</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b2" value="d" class="accent-luxury-gold"> d. ISO</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b2" value="e" class="accent-luxury-gold"> e. Frame Rate</label>
+                    </div>
+                </div>
+
+                <!-- SOAL B3 -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">B3. Manakah yang termasuk <strong>Shot Size</strong>? <em>(Pilih semua yang benar)</em></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b3" value="a" class="accent-luxury-gold"> a. Wide Shot (WS)</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b3" value="b" class="accent-luxury-gold"> b. Medium Shot (MS)</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b3" value="c" class="accent-luxury-gold"> c. Tilting</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b3" value="d" class="accent-luxury-gold"> d. Close Up (CU)</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b3" value="e" class="accent-luxury-gold"> e. Pedestal</label>
+                    </div>
+                </div>
+
+                <!-- SOAL B4 -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">B4. Manakah yang merupakan komponen <strong>Three-Point Lighting</strong>? <em>(Pilih semua yang benar)</em></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b4" value="a" class="accent-luxury-gold"> a. Key Light</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b4" value="b" class="accent-luxury-gold"> b. Fill Light</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b4" value="c" class="accent-luxury-gold"> c. Ambient Light</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b4" value="d" class="accent-luxury-gold"> d. Back Light</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b4" value="e" class="accent-luxury-gold"> e. Natural Light</label>
+                    </div>
+                </div>
+
+                <!-- SOAL B5 -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">B5. Manakah yang termasuk jenis <strong>cut sinematik</strong> yang dipelajari? <em>(Pilih semua yang benar)</em></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b5" value="a" class="accent-luxury-gold"> a. Hard Cut</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b5" value="b" class="accent-luxury-gold"> b. J-Cut</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b5" value="c" class="accent-luxury-gold"> c. L-Cut</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b5" value="d" class="accent-luxury-gold"> d. Match Cut</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b5" value="e" class="accent-luxury-gold"> e. Rough Cut</label>
+                    </div>
+                </div>
+
+                <!-- SOAL B6 -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">B6. Manakah yang termasuk jenis <strong>mikrofon untuk produksi video</strong>? <em>(Pilih semua yang benar)</em></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b6" value="a" class="accent-luxury-gold"> a. Boom Mic / Shotgun</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b6" value="b" class="accent-luxury-gold"> b. Clip-on / Lavalier</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b6" value="c" class="accent-luxury-gold"> c. ND Filter</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b6" value="d" class="accent-luxury-gold"> d. Condenser Mic</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b6" value="e" class="accent-luxury-gold"> e. Tripod</label>
+                    </div>
+                </div>
+
+                <!-- SOAL B7 -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">B7. Manakah yang termasuk <strong>software editing video profesional</strong>? <em>(Pilih semua yang benar)</em></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b7" value="a" class="accent-luxury-gold"> a. Adobe Premiere Pro</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b7" value="b" class="accent-luxury-gold"> b. DaVinci Resolve</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b7" value="c" class="accent-luxury-gold"> c. Final Cut Pro</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b7" value="d" class="accent-luxury-gold"> d. Microsoft Word</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b7" value="e" class="accent-luxury-gold"> e. Adobe Audition</label>
+                    </div>
+                </div>
+
+                <!-- SOAL B8 -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">B8. Manakah yang termasuk jenis <strong>transisi video</strong>? <em>(Pilih semua yang benar)</em></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b8" value="a" class="accent-luxury-gold"> a. Dissolve</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b8" value="b" class="accent-luxury-gold"> b. Fade to Black</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b8" value="c" class="accent-luxury-gold"> c. Wipe</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b8" value="d" class="accent-luxury-gold"> d. Ripple Edit</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b8" value="e" class="accent-luxury-gold"> e. Iris</label>
+                    </div>
+                </div>
+
+                <!-- SOAL B9 -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">B9. Manakah yang termasuk <strong>tools color grading</strong>? <em>(Pilih semua yang benar)</em></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b9" value="a" class="accent-luxury-gold"> a. Lift/Gamma/Gain</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b9" value="b" class="accent-luxury-gold"> b. Curves</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b9" value="c" class="accent-luxury-gold"> c. HSL Qualifier</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b9" value="d" class="accent-luxury-gold"> d. LUT (Look-Up Table)</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b9" value="e" class="accent-luxury-gold"> e. De-Esser</label>
+                    </div>
+                </div>
+
+                <!-- SOAL B10 -->
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">B10. Manakah yang termasuk <strong>codec video</strong>? <em>(Pilih semua yang benar)</em></p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b10" value="a" class="accent-luxury-gold"> a. H.264</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b10" value="b" class="accent-luxury-gold"> b. H.265</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b10" value="c" class="accent-luxury-gold"> c. Apple ProRes</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b10" value="d" class="accent-luxury-gold"> d. AAC</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" name="b10" value="e" class="accent-luxury-gold"> e. AV1</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- BAGIAN C: BENAR / SALAH (5 SOAL) -->
+        <!-- ============================================ -->
+        <section id="bagian-c" class="space-y-6">
+            <div class="section-header p-4 rounded-r-lg">
+                <h2 class="font-serif text-2xl font-bold text-white">✅ Bagian C — Benar atau Salah</h2>
+                <p class="text-sm text-gray-400 mt-1">5 Soal • Skor 2 poin/soal • Total 10 poin</p>
+            </div>
+
+            <div class="space-y-5">
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">C1. Storyboard adalah daftar rincian setiap shot yang harus direkam di lokasi syuting, berisi nomor scene, jenis shot, dan deskripsi aksi.</p>
+                    <div class="flex gap-4 mt-3">
+                        <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="c1" value="benar" class="accent-luxury-gold"> BENAR</label>
+                        <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="c1" value="salah" class="accent-luxury-gold"> SALAH</label>
+                    </div>
+                </div>
+
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">C2. ISO 100 menghasilkan lebih banyak noise dibandingkan ISO 6400 pada kondisi cahaya yang sama.</p>
+                    <div class="flex gap-4 mt-3">
+                        <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="c2" value="benar" class="accent-luxury-gold"> BENAR</label>
+                        <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="c2" value="salah" class="accent-luxury-gold"> SALAH</label>
+                    </div>
+                </div>
+
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">C3. J-Cut adalah teknik di mana audio dari shot berikutnya masuk lebih dulu sebelum video-nya muncul.</p>
+                    <div class="flex gap-4 mt-3">
+                        <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="c3" value="benar" class="accent-luxury-gold"> BENAR</label>
+                        <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="c3" value="salah" class="accent-luxury-gold"> SALAH</label>
+                    </div>
+                </div>
+
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">C4. "Teal & Orange" look dalam color grading menggunakan shadows ke warna teal (biru-hijau) dan highlights ke warna orange, dengan skin tone tetap natural.</p>
+                    <div class="flex gap-4 mt-3">
+                        <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="c4" value="benar" class="accent-luxury-gold"> BENAR</label>
+                        <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="c4" value="salah" class="accent-luxury-gold"> SALAH</label>
+                    </div>
+                </div>
+
+                <div class="glass p-5 rounded-xl">
+                    <p class="font-medium text-white mb-3">C5. Codec H.264 adalah codec untuk EDITING dan ARCHIVE karena kualitasnya nyaris lossless dengan ukuran file sangat besar.</p>
+                    <div class="flex gap-4 mt-3">
+                        <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="c5" value="benar" class="accent-luxury-gold"> BENAR</label>
+                        <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="c5" value="salah" class="accent-luxury-gold"> SALAH</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- BAGIAN D: MENJODOHKAN (5 SOAL) -->
+        <!-- ============================================ -->
+        <section id="bagian-d" class="space-y-6">
+            <div class="section-header p-4 rounded-r-lg">
+                <h2 class="font-serif text-2xl font-bold text-white">🔗 Bagian D — Menjodohkan</h2>
+                <p class="text-sm text-gray-400 mt-1">5 Soal • Skor 6 poin/soal • Total 30 poin • Cocokkan istilah dengan definisinya</p>
+            </div>
+
+            <div class="glass p-6 rounded-xl">
+                <p class="text-sm text-gray-400 mb-6">Pilih definisi yang paling tepat untuk setiap istilah di bawah ini menggunakan dropdown:</p>
+                
+                <div class="space-y-4">
+                    <div class="bg-luxury-900/50 p-4 rounded-lg">
+                        <p class="font-bold text-luxury-gold mb-2">D1. Foley</p>
+                        <select name="d1" class="w-full bg-luxury-800 border border-gray-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold focus:outline-none">
+                            <option value="">-- Pilih definisi --</option>
+                            <option value="1">Seni menciptakan efek suara tiruan secara manual untuk memperkuat visual</option>
+                            <option value="2">Proses memperbaiki kesalahan teknis warna agar natural</option>
+                            <option value="3">Teknik mengganti background berwarna solid dengan gambar lain</option>
+                            <option value="4">Algoritma kompresi video untuk distribusi</option>
+                            <option value="5">Proses menggabungkan seluruh elemen timeline menjadi satu file</option>
+                        </select>
+                    </div>
+
+                    <div class="bg-luxury-900/50 p-4 rounded-lg">
+                        <p class="font-bold text-luxury-gold mb-2">D2. Color Correction</p>
+                        <select name="d2" class="w-full bg-luxury-800 border border-gray-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold focus:outline-none">
+                            <option value="">-- Pilih definisi --</option>
+                            <option value="1">Seni menciptakan efek suara tiruan secara manual untuk memperkuat visual</option>
+                            <option value="2">Proses memperbaiki kesalahan teknis warna agar natural dan konsisten antar-shot</option>
+                            <option value="3">Teknik mengganti background berwarna solid dengan gambar lain</option>
+                            <option value="4">Algoritma kompresi video untuk distribusi</option>
+                            <option value="5">Proses menggabungkan seluruh elemen timeline menjadi satu file</option>
+                        </select>
+                    </div>
+
+                    <div class="bg-luxury-900/50 p-4 rounded-lg">
+                        <p class="font-bold text-luxury-gold mb-2">D3. Chroma Key</p>
+                        <select name="d3" class="w-full bg-luxury-800 border border-gray-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold focus:outline-none">
+                            <option value="">-- Pilih definisi --</option>
+                            <option value="1">Seni menciptakan efek suara tiruan secara manual untuk memperkuat visual</option>
+                            <option value="2">Proses memperbaiki kesalahan teknis warna agar natural</option>
+                            <option value="3">Teknik mengganti background berwarna solid (hijau/biru) dengan gambar/video lain</option>
+                            <option value="4">Algoritma kompresi video untuk distribusi</option>
+                            <option value="5">Proses menggabungkan seluruh elemen timeline menjadi satu file</option>
+                        </select>
+                    </div>
+
+                    <div class="bg-luxury-900/50 p-4 rounded-lg">
+                        <p class="font-bold text-luxury-gold mb-2">D4. Codec</p>
+                        <select name="d4" class="w-full bg-luxury-800 border border-gray-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold focus:outline-none">
+                            <option value="">-- Pilih definisi --</option>
+                            <option value="1">Seni menciptakan efek suara tiruan secara manual untuk memperkuat visual</option>
+                            <option value="2">Proses memperbaiki kesalahan teknis warna agar natural</option>
+                            <option value="3">Teknik mengganti background berwarna solid dengan gambar lain</option>
+                            <option value="4">Algoritma kompresi video (seperti H.264, ProRes) yang menentukan kualitas dan ukuran file</option>
+                            <option value="5">Proses menggabungkan seluruh elemen timeline menjadi satu file</option>
+                        </select>
+                    </div>
+
+                    <div class="bg-luxury-900/50 p-4 rounded-lg">
+                        <p class="font-bold text-luxury-gold mb-2">D5. Rendering</p>
+                        <select name="d5" class="w-full bg-luxury-800 border border-gray-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold focus:outline-none">
+                            <option value="">-- Pilih definisi --</option>
+                            <option value="1">Seni menciptakan efek suara tiruan secara manual untuk memperkuat visual</option>
+                            <option value="2">Proses memperbaiki kesalahan teknis warna agar natural</option>
+                            <option value="3">Teknik mengganti background berwarna solid dengan gambar lain</option>
+                            <option value="4">Algoritma kompresi video untuk distribusi</option>
+                            <option value="5">Proses komputasi menggabungkan seluruh elemen timeline (video, audio, efek, teks) menjadi satu file video utuh</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tombol Submit -->
+        <section class="pt-8">
+            <button type="button" onclick="hitungNilaiUAS()" class="w-full bg-gradient-to-r from-luxury-gold to-yellow-600 text-luxury-900 font-bold py-4 rounded-xl hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-300 text-lg">
+                ✉️ KUMPULKAN JAWABAN & LIHAT HASIL
+            </button>
+            
+            <div id="hasilNilai" class="hidden mt-8 bg-luxury-800 p-8 rounded-2xl border border-luxury-gold/30 space-y-6">
+                <div class="text-center">
+                    <h3 class="font-serif text-2xl font-bold text-white mb-2">📊 Hasil Ujian Akhir Semester</h3>
+                    <p class="text-sm text-gray-400">Audio Vidio XII DKV Ganjil • Pertemuan 1-7, 9-15</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-luxury-900 p-4 rounded-xl text-center">
+                        <p class="text-xs text-gray-400 uppercase">Bagian A (PG)</p>
+                        <p class="text-2xl font-bold text-luxury-gold" id="skorA">0</p>
+                        <p class="text-xs text-gray-500">/ 40</p>
+                    </div>
+                    <div class="bg-luxury-900 p-4 rounded-xl text-center">
+                        <p class="text-xs text-gray-400 uppercase">Bagian B (Kompleks)</p>
+                        <p class="text-2xl font-bold text-luxury-gold" id="skorB">0</p>
+                        <p class="text-xs text-gray-500">/ 20</p>
+                    </div>
+                    <div class="bg-luxury-900 p-4 rounded-xl text-center">
+                        <p class="text-xs text-gray-400 uppercase">Bagian C (B/S)</p>
+                        <p class="text-2xl font-bold text-luxury-gold" id="skorC">0</p>
+                        <p class="text-xs text-gray-500">/ 10</p>
+                    </div>
+                    <div class="bg-luxury-900 p-4 rounded-xl text-center">
+                        <p class="text-xs text-gray-400 uppercase">Bagian D (Jodoh)</p>
+                        <p class="text-2xl font-bold text-luxury-gold" id="skorD">0</p>
+                        <p class="text-xs text-gray-500">/ 30</p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-luxury-gold/20 to-transparent p-6 rounded-xl border border-luxury-gold/30 text-center">
+                    <p class="text-sm text-gray-400 uppercase tracking-wider">Total Nilai UAS</p>
+                    <p class="text-6xl font-serif font-bold text-luxury-gold mt-2" id="skorTotal">0</p>
+                    <p class="text-sm text-gray-400 mt-2">dari 100 poin</p>
+                    <p class="text-lg font-bold mt-4" id="predikat">-</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-4">
+                    <button type="button" onclick="alert('Simulasi: File PDF lengkap sedang diunduh...')" class="bg-luxury-700 text-white text-sm py-3 rounded-lg hover:bg-luxury-600 transition">📥 UNDUH PDF LENGKAP</button>
+                    <button type="button" onclick="alert('Simulasi: File skor sedang diunduh...')" class="bg-luxury-700 text-white text-sm py-3 rounded-lg hover:bg-luxury-600 transition">📊 UNDUH SKOR SAJA</button>
+                    <button type="button" onclick="alert('Simulasi: Email telah dikirim ke ausianggina@gmail.com')" class="bg-luxury-700 text-white text-sm py-3 rounded-lg hover:bg-luxury-600 transition">✉️ KIRIM EMAIL GURU</button>
+                </div>
+                <button type="button" onclick="location.reload()" class="w-full text-sm text-gray-400 hover:text-white underline mt-4">🔄 MULAI ULANG</button>
+            </div>
+        </section>
+
+    </form>
+
+    <!-- Footer -->
+    <footer class="bg-luxury-900 border-t border-luxury-gold/10 py-8 text-center">
+        <p class="text-gray-500 text-sm">© 2026 AUSI ANGGINA, S.Pd — SMKN 1 KOTO BALINGKA. All rights reserved.</p>
+        <p class="text-gray-600 text-xs italic mt-2">"Integritas adalah fondasi dari setiap pencapaian sejati."</p>
+    </footer>
+
+    <!-- Script Timer & Penilaian -->
+    <script>
+        // === TIMER 120 MENIT ===
+        let timeLeft = 120 * 60; // 120 menit dalam detik
+        const timerEl = document.getElementById('timer');
+        
+        const timerInterval = setInterval(() => {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerEl.innerText = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            
+            if (timeLeft <= 300) { // 5 menit terakhir
+                timerEl.classList.add('timer-warning');
+            }
+            
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                alert("⏰ WAKTU HABIS! Jawaban akan dikumpulkan otomatis.");
+                hitungNilaiUAS();
+                return;
+            }
+            timeLeft--;
+        }, 1000);
+
+        // === FUNGSI PENILAIAN UAS ===
+        function hitungNilaiUAS() {
+            // Validasi Data Siswa
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const tanggal = document.getElementById('tanggal').value;
+            const kelas = document.getElementById('kelas').value;
+
+            if (!nama || !nis || !tanggal || !kelas) {
+                alert("⚠️ Mohon lengkapi semua Data Siswa terlebih dahulu!");
+                return;
+            }
+
+            // === KUNCI JAWABAN BAGIAN A (PG) ===
+            const kunciA = {
+                a1: 'b',  // Pra-produksi
+                a2: 'b',  // Premise dan Synopsis
+                a3: 'c',  // Low Angle
+                a4: 'b',  // Segitiga Eksposur
+                a5: 'b',  // Rule of Thirds
+                a6: 'b',  // Tilting
+                a7: 'c',  // Clip-on / Lavalier
+                a8: 'b',  // Logging
+                a9: 'c',  // Match Cut
+                a10: 'b', // Hard Cut
+                a11: 'a', // Color Correction
+                a12: 'b', // -12 dB hingga -6 dB
+                a13: 'b', // Chroma Key
+                a14: 'c', // H.264
+                a15: 'a', // Rec.709
+                a16: 'a', // ISO terlalu tinggi, turunkan + ND filter
+                a17: 'b', // Karakter seolah menatap ke arah sama
+                a18: 'a', // Turunkan musik, naikkan dialog, ducking
+                a19: 'a', // ProRes untuk archive, H.264 untuk YouTube
+                a20: 'b'  // Urutan lengkap pra-produksi s/d rendering 2 versi
+            };
+
+            let skorA = 0;
+            for (let i = 1; i <= 20; i++) {
+                const j = document.querySelector(`input[name="a${i}"]:checked`);
+                if (j && j.value === kunciA[`a${i}`]) skorA += 2;
+            }
+
+            // === KUNCI JAWABAN BAGIAN B (KOMPLEKS) ===
+            const kunciB = {
+                b1: ['a', 'b', 'd'],           // naskah, storyboard, hunting lokasi
+                b2: ['a', 'c', 'd'],           // aperture, shutter, ISO
+                b3: ['a', 'b', 'd'],           // WS, MS, CU
+                b4: ['a', 'b', 'd'],           // key, fill, back
+                b5: ['a', 'b', 'c', 'd'],      // hard, j-cut, l-cut, match cut
+                b6: ['a', 'b', 'd'],           // boom, clip-on, condenser
+                b7: ['a', 'b', 'c'],           // premiere, resolve, fcp (audition = audio)
+                b8: ['a', 'b', 'c', 'e'],      // dissolve, fade, wipe, iris
+                b9: ['a', 'b', 'c', 'd'],      // lift/gamma/gain, curves, hsl, lut
+                b10: ['a', 'b', 'c', 'e']      // h264, h265, prores, av1 (aac = audio)
+            };
+
+            let skorB = 0;
+            for (let i = 1; i <= 10; i++) {
+                const checked = document.querySelectorAll(`input[name="b${i}"]:checked`);
+                const jawabanSiswa = Array.from(checked).map(c => c.value).sort().join(',');
+                const kunciBenar = kunciB[`b${i}`].sort().join(',');
+                if (jawabanSiswa === kunciBenar) skorB += 2;
+            }
+
+            // === KUNCI JAWABAN BAGIAN C (BENAR/SALAH) ===
+            const kunciC = {
+                c1: 'salah',   // itu definisi shot list, bukan storyboard
+                c2: 'salah',   // ISO 100 justru lebih sedikit noise
+                c3: 'benar',   // J-cut = audio masuk dulu
+                c4: 'benar',   // Teal & Orange look
+                c5: 'salah'    // H.264 adalah codec DISTRIBUSI, bukan editing
+            };
+
+            let skorC = 0;
+            for (let i = 1; i <= 5; i++) {
+                const j = document.querySelector(`input[name="c${i}"]:checked`);
+                if (j && j.value === kunciC[`c${i}`]) skorC += 2;
+            }
+
+            // === KUNCI JAWABAN BAGIAN D (MENJODOHKAN) ===
+            const kunciD = {
+                d1: '1',   // Foley → Seni menciptakan efek suara tiruan
+                d2: '2',   // Color Correction → Memperbaiki kesalahan teknis warna
+                d3: '3',   // Chroma Key → Mengganti background solid
+                d4: '4',   // Codec → Algoritma kompresi video
+                d5: '5'    // Rendering → Menggabungkan seluruh elemen timeline
+            };
+
+            let skorD = 0;
+            for (let i = 1; i <= 5; i++) {
+                const j = document.querySelector(`select[name="d${i}"]`);
+                if (j && j.value === kunciD[`d${i}`]) skorD += 6;
+            }
+
+            // === HITUNG TOTAL ===
+            const total = skorA + skorB + skorC + skorD;
+            
+            document.getElementById('skorA').innerText = skorA;
+            document.getElementById('skorB').innerText = skorB;
+            document.getElementById('skorC').innerText = skorC;
+            document.getElementById('skorD').innerText = skorD;
+            document.getElementById('skorTotal').innerText = total;
+
+            // Predikat
+            let predikat = '';
+            let warna = '';
+            if (total >= 90) { predikat = '🏆 ISTIMEWA (A)'; warna = 'text-luxury-gold'; }
+            else if (total >= 80) { predikat = '🌟 SANGAT BAIK (B)'; warna = 'text-green-400'; }
+            else if (total >= 70) { predikat = '✅ BAIK (C)'; warna = 'text-blue-400'; }
+            else if (total >= 60) { predikat = '⚠️ CUKUP (D)'; warna = 'text-yellow-400'; }
+            else { predikat = '❌ KURANG (E) — Remedial'; warna = 'text-red-400'; }
+
+            const predEl = document.getElementById('predikat');
+            predEl.innerText = predikat;
+            predEl.className = `text-lg font-bold mt-4 ${warna}`;
+
+            document.getElementById('hasilNilai').classList.remove('hidden');
+            document.getElementById('hasilNilai').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Hentikan timer
+            clearInterval(timerInterval);
+
+            alert(`✅ Ujian berhasil dikumpulkan!\n\nNama: ${nama}\nNIS: ${nis}\nKelas: ${kelas}\n\nTotal Nilai: ${total}/100\nPredikat: ${predikat}\n\nRincian:\n• Bagian A (PG): ${skorA}/40\n• Bagian B (Kompleks): ${skorB}/20\n• Bagian C (B/S): ${skorC}/10\n• Bagian D (Jodoh): ${skorD}/30`);
+        }
+    </script>
+
+</body>
+</html>
